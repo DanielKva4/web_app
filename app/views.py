@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from app.models import *
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 
 
 def index(request):
@@ -34,11 +35,19 @@ def login_user(request):
         login(request, user)
         return HttpResponseRedirect('/')
 
+def do_logout(request):
+    if request.user.is_authenticated:
+        logout(request)
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'error.html')
 
-
-# def start_page(request):
-#     if request.user.is_authenticated:
-#         return render(request, 'start_page_root.html')
-#     else:
-#         return render(request, 'start_page.html')
-
+# def register(request):
+#     user = User.objects.create_user(
+#         request.POST['login'],
+#         password=request.POST['password'],
+#         first_name='aaa',
+#         last_name='bbb',
+#         email='a@b.c'
+#     )
+#     client = Client(user=user, address='Minsk')
