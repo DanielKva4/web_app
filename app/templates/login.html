@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Sing In{% endblock %}
+
+{% block body-addons %}class="text-center"{% endblock %}
+
+{% block content %}
+<main class="form-signin">
+  <form method="post" action="login">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <div class="form-floating">
+      <input type="text" name="username" placeholder="Login">
+    </div>
+    <div class="form-floating">
+      <input type="password" name="password" placeholder="Password">
+    </div>
+    <button class="w-10 btn btn-primary" type="submit">Sign in</button>
+  </form>
+</main>
+{% endblock %}
+
+
+
