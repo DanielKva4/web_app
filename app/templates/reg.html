@@ -7,6 +7,7 @@
 {% block head %}
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="static/css/my.css">
 {% endblock %}
 
 {% block content %}
@@ -18,7 +19,7 @@
 			    		<h3 class="panel-title">Please sign up</h3>
 			 			</div>
 			 			<div class="panel-body">
-			    		<form role="form">
+			    		<form role="form" action="reg" method="post">
 			    					<div class="form-group">
 			                <input type="text" name="username" class="form-control input-sm" placeholder="Login">
 			    					</div>

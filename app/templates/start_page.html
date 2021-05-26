@@ -3,5 +3,9 @@
 {% block title %}Главная страница{% endblock %}
 
 {% block content %}
-    <p>Привет! Ты на главной странице, анон!</p>
+    <p>{% if request.user.is_authenticated %}
+        Привет! Ты на главной странице, рутованный!
+    {% else %}
+        Привет! Ты на главной странице, анон!
+    {% endif %}</p>
 {% endblock %}

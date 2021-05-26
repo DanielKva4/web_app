@@ -6,10 +6,7 @@ from django.contrib.auth.models import User
 
 
 def index(request):
-    if request.user.is_authenticated:
-        return render(request, 'start_page_root.html')
-    else:
-        return render(request, 'start_page.html')
+    return render(request, 'start_page.html')
 
 
 def about(request):
@@ -49,11 +46,8 @@ def Test(request):
 
 def register(request):
     user = User.objects.create_user(
-        login = request.POST['login'],
-        password= request.POST['password'],
-        username='aaa',
-        email='a@b.c'
+        request.POST['username'],
+        password=request.POST['password'],
+        email=request.POST['email']
     )
-    client = Client(user=user, address='Minsk')
-    client.save()
     return HttpResponse('OK')
