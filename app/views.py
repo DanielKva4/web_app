@@ -42,12 +42,18 @@ def do_logout(request):
     else:
         return render(request, 'error.html')
 
-# def register(request):
-#     user = User.objects.create_user(
-#         request.POST['login'],
-#         password=request.POST['password'],
-#         first_name='aaa',
-#         last_name='bbb',
-#         email='a@b.c'
-#     )
-#     client = Client(user=user, address='Minsk')
+
+def Test(request):
+    return render(request, 'reg.html')
+
+
+def register(request):
+    user = User.objects.create_user(
+        login = request.POST['login'],
+        password= request.POST['password'],
+        username='aaa',
+        email='a@b.c'
+    )
+    client = Client(user=user, address='Minsk')
+    client.save()
+    return HttpResponse('OK')
