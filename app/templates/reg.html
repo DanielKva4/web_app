@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block head %}
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" href="static/css/my.css">
 {% endblock %}
 
@@ -21,18 +21,18 @@
 			 			<div class="panel-body">
 			    		<form role="form" action="reg" method="post">
 			    					<div class="form-group">
-			                <input type="text" name="username" class="form-control input-sm" placeholder="Login">
+			                <input type="text" name="username" id="login" class="form-control input-sm" placeholder="Login">
 			    					</div>
 			    			<div class="form-group">
-			    				<input type="email" name="email" class="form-control input-sm" placeholder="Email">
+			    				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email">
 			    			</div>
 			    					<div class="form-group">
-			    						<input type="password" name="password" class="form-control input-sm" placeholder="Password">
+			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
 			    					</div>
 			    				</div>
 			    			</div>
 
-			    			<input type="submit" value="Register" class="btn btn-info btn-block">
+			    			<input type="submit" value="Register" id="btn_reg" class="btn btn-info btn-block">
 
 			    		</form>
 			    	</div>

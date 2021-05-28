@@ -40,7 +40,7 @@ def do_logout(request):
         return render(request, 'error.html')
 
 
-def Test(request):
+def reg(request):
     return render(request, 'reg.html')
 
 
@@ -50,4 +50,5 @@ def register(request):
         password=request.POST['password'],
         email=request.POST['email']
     )
-    return HttpResponse('OK')
+    login(request, user)
+    return HttpResponseRedirect('/')
