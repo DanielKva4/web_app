@@ -27,22 +27,59 @@
 // console.log(fn4([4, 6, 8], [2, 3, 4]))
 
 $( document ).ready(function () {
-    $('#Home').click(function () {
-        alert('Нажата кнопка Home')
+    // $('#btn_reg').click(function (e) {
+    //     x = $('#login').val()
+    //     if (x.length < 3) {
+    //         alert('В логине должно быть больше 3 символов')
+    //         e.preventDefault()
+    //     }
+    // })
+    // $('#btn_reg').click(function (e) {
+    //     x = $('#password').val()
+    //     if (x.length < 3) {
+    //         alert('В пароле должно быть больше 3 символов')
+    //         e.preventDefault()
+    //     }
+    // })
+    $('#1').click(function (e) {
+        $.post(
+            'ajax_response',
+            {
+                'a': 32
+            },
+            function (response) {
+                alert(response.number)
+            }
+        )
+    })
+    $('#login').blur(function () {
+        $.post(
+            'username_check',
+            {
+                'check': $('#login').val()
+            },
+            function (response) {
+                if (response.username == 'y') {
+                    alert('Такой юзер есть')
+                }
+            }
+        )
     })
     $('#btn_reg').click(function (e) {
-        x = $('#login').val()
-        if (x.length < 3) {
-            alert('В логине должно быть больше 3 символов')
-            e.preventDefault()
-        }
-    })
-    $('#btn_reg').click(function (e) {
-        x = $('#password').val()
-        if (x.length < 3) {
-            alert('В пароле должно быть больше 3 символов')
-            e.preventDefault()
-        }
+        $.post(
+            'reg',
+            {
+                'username': $('#login').val(),
+                'email': $('#email').val(),
+                'password': $('#password').val()
+            },
+            function (response) {
+            if (response.status == 'ok') {
+                alert('Well done')
+                window.location.pathname = '/'
+            }
+            }
+        )
     })
 })
 

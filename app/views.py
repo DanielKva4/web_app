@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from app.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+import random
 
 
 def index(request):
@@ -32,6 +33,7 @@ def login_user(request):
         login(request, user)
         return HttpResponseRedirect('/')
 
+
 def do_logout(request):
     if request.user.is_authenticated:
         logout(request)
@@ -51,4 +53,18 @@ def register(request):
         email=request.POST['email']
     )
     login(request, user)
-    return HttpResponseRedirect('/')
+    return JsonResponse({'status': 'ok'})
+
+
+
+def ajax_response(request):
+    response = {
+        "number": random.randint(1, 100) + int(request.POST['a'])
+    }
+    return JsonResponse(response)
+
+def username_check(request):
+    response= {}
+    if len(User.objects.filter(username=request.POST['check'])) != 0:
+        response = {'username': 'y'}
+    return JsonResponse(response)
