@@ -68,3 +68,8 @@ def username_check(request):
     if len(User.objects.filter(username=request.POST['check'])) != 0:
         response = {'username': 'y'}
     return JsonResponse(response)
+
+
+
+
+

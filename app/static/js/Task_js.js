@@ -41,17 +41,6 @@ $( document ).ready(function () {
     //         e.preventDefault()
     //     }
     // })
-    $('#1').click(function (e) {
-        $.post(
-            'ajax_response',
-            {
-                'a': 32
-            },
-            function (response) {
-                alert(response.number)
-            }
-        )
-    })
     $('#login').blur(function () {
         $.post(
             'username_check',
