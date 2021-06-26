@@ -19,22 +19,20 @@
 			    		<h3 class="panel-title">Please sign up</h3>
 			 			</div>
 			 			<div class="panel-body">
-
 			    					<div class="form-group">
-			                <input type="text" name="username" id="login" class="form-control input-sm" placeholder="Login">
+			                <input required type="text" name="username" id="login" class="form-control input-sm" placeholder="Login">
+                                        <span id="log_error" style="display: none" class="badge bg-danger">Danger</span>
 			    					</div>
 			    			<div class="form-group">
-			    				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email">
+			    				<input required type="email" name="email" id="email" class="form-control input-sm" placeholder="Email">
 			    			</div>
 			    					<div class="form-group">
-			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+			    						<input required type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                        <span id="pass_error" style="display: none" class="badge bg-danger">Danger</span>
 			    					</div>
 			    				</div>
 			    			</div>
-
             <button id="btn_reg" class="btn btn-info btn-block">Register</button>
-
-
 			    	</div>
 	    		</div>
     		</div>

@@ -56,13 +56,6 @@ def register(request):
     return JsonResponse({'status': 'ok'})
 
 
-
-def ajax_response(request):
-    response = {
-        "number": random.randint(1, 100) + int(request.POST['a'])
-    }
-    return JsonResponse(response)
-
 def username_check(request):
     response= {}
     if len(User.objects.filter(username=request.POST['check'])) != 0:
