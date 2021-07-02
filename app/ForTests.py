@@ -21,20 +21,20 @@ import statistics
 #         return shame()
 
 
-# def linear_regression():
-#     df = pandas.read_csv('D:/Учеба/Базы/iq.csv')  # Для Linux /home/user/csv/iq.csv
-#     years_of_education = df['years_of_education'][:, np.newaxis]
-#     x_train, x_test, y_train, y_test = train_test_split(
-#         years_of_education, df['iq'], test_size=0.4
-#     )
-#     model = linear_model.LinearRegression()
-#     model.fit(x_train, y_train)
-#     print('w_1 = ' + str(model.coef_[0]) + ' w_0 = ' + str(model.intercept_))
-#     print('iq = ' + str(model.coef_[0]) + ' * experience + ' + str(model.intercept_))
-#     y_predicted = model.predict(x_test)
-#     score = r2_score(y_test, y_predicted)
-#     print('Точность: %s' % score)
-#     return
+def linear_regression():
+    df = pandas.read_csv('D:/Учеба/Базы/iq.csv')  # Для Linux /home/user/csv/iq.csv
+    years_of_education = df['years_of_education'][:, np.newaxis]
+    x_train, x_test, y_train, y_test = train_test_split(
+        years_of_education, df['iq'], test_size=0.4
+    )
+    model = linear_model.LinearRegression()
+    model.fit(x_train, y_train)
+    print('w_1 = ' + str(model.coef_[0]) + ' w_0 = ' + str(model.intercept_))
+    print('iq = ' + str(model.coef_[0]) + ' * experience + ' + str(model.intercept_))
+    y_predicted = model.predict(x_test)
+    score = r2_score(y_test, y_predicted)
+    print('Точность: %s' % score)
+    return
 
 
 
@@ -49,7 +49,7 @@ def curses():
     for x in range(len_days):
         curse.append(data[x]['Cur_OfficialRate'])
     result = statistics.mean(curse)
-    result = float('{:.4f}'.format(result))
+    result = float('{:.4f}'.format(result))   # round - округляет
     return result
 
 
