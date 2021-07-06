@@ -10,3 +10,6 @@ class Person(models.Model):
 class Cats(models.Model):
     name = models.CharField(max_length=100)
     photo = models.ImageField()
+
+    def cloun(self):
+        return 'tits'
