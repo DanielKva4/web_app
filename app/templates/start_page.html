@@ -7,4 +7,5 @@
     Привет! Ты на главной странице, {%  if request.user.is_authenticated %}{{ request.user.username }}
     {% else %}анон{% endif %}!
     </p>
+    <img src="{{ cat.photo.url }}">
 {% endblock %}

@@ -4,10 +4,17 @@ from app.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 import random
+import pickle
+from pymemcache import Client
+from app.models import Person, Cats
 
 
 def index(request):
-    return render(request, 'start_page.html')
+    cat = Cats.objects.all()[0]
+    return render(request, 'start_page.html',
+                  {
+                      'cat': cat
+                  })
 
 
 def about(request):
@@ -63,6 +70,35 @@ def username_check(request):
     return JsonResponse(response)
 
 
+def more_persons():
+    for _ in range(200):
+        slice = []
+        for _ in range(500):
+            slice.append(
+                Person(
+                    name=str(random.randint(1, 1000)),
+                )
+            )
+        Person.objects.bulk_create(slice)
 
 
+def time_cash(request):
+    client = Client(('localhost', 11211))
+    people = client.get('people')
+    if people is None:
+        people = []
+        for person in Person.objects.all()[:100000]:
+            people.append(person.name)
+        client.set(
+            'people',
+            pickle.dumps(people),
+            expire=60
+        )
+    else:
+        people = pickle.loads(people)
 
+    return render(request, 'start_page.html',
+                  {
+                      'people': people
+                  }
+                  )

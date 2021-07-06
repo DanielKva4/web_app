@@ -102,6 +102,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+MEDIA_ROOT = '/home/user/PycharmProjectssssssss/web_app/app/images'
+MEDIA_URL = '/media/'
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 

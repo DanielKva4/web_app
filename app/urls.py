@@ -10,4 +10,5 @@ urlpatterns = [
     path('reg', register),
     path('registration', reg, name='reg'),
     path('username_check', username_check),
+    path('time_cash', time_cash),
 ]

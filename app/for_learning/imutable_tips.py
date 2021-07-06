@@ -74,3 +74,9 @@ generator = simple(100)
 print(next(generator))
 print(next(generator))
 print('Программа выполнена за ' + str((datetime.now() - start).total_seconds()) + ' секунд')
+
+
+
+
+
+
