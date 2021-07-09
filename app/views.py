@@ -64,7 +64,7 @@ def register(request):
 
 
 def username_check(request):
-    response= {}
+    response = {}
     if len(User.objects.filter(username=request.POST['check'])) != 0:
         response = {'username': 'y'}
     return JsonResponse(response)
@@ -102,3 +102,37 @@ def time_cash(request):
                       'people': people
                   }
                   )
+
+
+def server(request):
+    if not request.POST['salary'].isdigit():
+        return JsonResponse(
+            {
+                'status': 'Зарплата должна состоять из чисел'
+            }
+        )
+    elif int(request.POST['salary']) > 300:
+        return JsonResponse(
+            {
+                'status': 'В беларуси столько не получают'
+            }
+        )
+    elif not request.POST['name'].isalpha():
+        return JsonResponse(
+            {
+                'status': 'По русски пиши, нихуя не понятно'
+            }
+        )
+    else:
+        Person.objects.filter(
+            id=request.POST['id']
+        ).update(
+            name=request.POST['name'],
+            salary=int(request.POST['salary'])
+        )
+        return JsonResponse(
+            {
+                'status': 'OK',
+                'cache': True
+            }
+        )
